@@ -16,3 +16,10 @@ body {
   font-size: 1.6rem; /* html font-size is the root em */
   box-sizing: border-box; /* not inherited by default */
 }
+
+a,
+a:hover,
+a:visited {
+  text-decoration: none;
+  color: black;
+}
