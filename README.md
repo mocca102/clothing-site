@@ -1,1 +1,1 @@
-An E-commerce clothing applcation
+An E-commerce clothing app
