@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { useState, useEffect } from 'react';
 import MenuItem from '../menu-item/MenuItem';
 import './Directory.scss';
@@ -46,13 +47,8 @@ export default () => {
 
   return (
     <div className="directory">
-      {sections.map(({ title, imageUrl, id, size }) => (
-        <MenuItem
-          title={title}
-          imageUrl={imageUrl}
-          size={size}
-          key={id}
-        />
+      {sections.map(({ id, ...restProps }) => (
+        <MenuItem key={id} {...restProps} />
       ))}
     </div>
   );
