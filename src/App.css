@@ -12,7 +12,7 @@ html {
 }
 
 body {
-  font-family: 'PT Sans', sans-serif;
+  font-family: 'Open Sans Condensed', sans-serif;
   font-size: 1.6rem; /* html font-size is the root em */
   box-sizing: border-box; /* not inherited by default */
 }
@@ -22,4 +22,8 @@ a:hover,
 a:visited {
   text-decoration: none;
   color: black;
+}
+
+ul {
+  list-style: none;
 }

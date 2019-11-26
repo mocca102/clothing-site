@@ -6,13 +6,14 @@
   }
 
   &__title {
-    color: sandybrown;
+    font-size: 2.8rem;
     margin-bottom: 2rem;
+    text-transform: uppercase;
   }
 
   &__items {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;  
+    justify-content: space-around;  
   }
 }

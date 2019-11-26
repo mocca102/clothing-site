@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState, useEffect } from 'react';
-import MenuItem from '../menu-item/MenuItem';
+import MenuItem from '../Menu-item/MenuItem';
 import './Directory.scss';
 
 const sectionsData = [

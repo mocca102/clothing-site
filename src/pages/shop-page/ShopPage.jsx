@@ -1,8 +1,9 @@
 import React from 'react';
 
 import SHOP_DATA from '../../assets/shop-data';
-import ShopCollectionPreview from '../../components/shop-collection-preview/ShopCollectionPreview'
+import ShopCollectionPreview from '../../components/Shop-collection-preview/ShopCollectionPreview'
 import '../PageContainer.scss';
+import './ShopPage.scss';
 
 class ShopPage extends React.Component {
   constructor(props) {
@@ -26,6 +27,7 @@ class ShopPage extends React.Component {
   render() {
     return (
       <div className="page-container shop-page">
+        <h1 className="shop-page__title">Collections</h1>
         {this.renderCollections()}
       </div>
     );

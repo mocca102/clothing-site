@@ -1,0 +1,47 @@
+.shop-item {
+  min-width: 25rem;
+  height: 32rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+
+  &:hover {
+    filter: opacity(.8); 
+
+    .shop-item__btn {
+      cursor: pointer;
+      align-self: center;
+      display: block;
+      position: absolute;
+      bottom: 5rem;
+      background: rgba($color: white, $alpha: 0.7);
+      padding: 1.5rem 6rem;
+      border: none;
+      font-size: 1.5rem;
+      &:hover {
+        background: rgba($color: #000000, $alpha: .9);
+        color: white;
+      }
+    }
+  }
+  
+  &__bgImage {
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 90%;
+  }
+  
+  &__footer {
+    font-size: 1.8rem;
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__btn {
+    display: none;
+  }
+}

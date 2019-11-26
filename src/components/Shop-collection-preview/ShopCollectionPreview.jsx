@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 
-import ShopItem from '../shop-item/ShopItem';
+import ShopItem from '../Shop-item/ShopItem';
 import './ShopCollectionPreview.scss';
 
 const ShopCollectionPreview = ({ items, title, routeName, match }) => {
@@ -20,7 +20,7 @@ const ShopCollectionPreview = ({ items, title, routeName, match }) => {
   return (
     <div className="shop-collection-preview">
       <Link to={`${match.url}/${routeName}`}>
-        <h1 className="shop-collection-preview__title">{title}</h1>
+        <h2 className="shop-collection-preview__title">{title}</h2>
       </Link>
       <div className="shop-collection-preview__items">
         {renderItems()}

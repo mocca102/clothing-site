@@ -1,0 +1,17 @@
+.header {
+  font-size: 2rem;
+  height: 10rem;
+  padding: 1rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__nav {
+    display: flex;
+
+    &-item {
+      color: gray;
+      padding: 1rem 2rem;
+    }
+  }
+}
