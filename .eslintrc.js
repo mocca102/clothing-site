@@ -1,4 +1,6 @@
 module.exports = {
+  parser: "babel-eslint",
+  
   env: {
     browser: true,
     es6: true,
@@ -23,6 +25,7 @@ module.exports = {
   ],
   rules: {
     "react/prop-types": 0,
-    "object-curly-newline": 0
+    "object-curly-newline": 0,
+    "react/state-in-constructor": 0
   },
 };
