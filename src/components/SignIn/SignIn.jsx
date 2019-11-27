@@ -3,6 +3,7 @@ import React from 'react';
 import './SignIn.scss';
 
 import FormInput from '../FormInput/FormInput';
+import CustomBtn from '../CustomBtn/CustomBtn';
 
 class SignIn extends React.Component {
   state = { email: '', password: '' };
@@ -37,7 +38,7 @@ class SignIn extends React.Component {
           value={password}
           required
         />
-        <input type="submit" name="" id="" />
+        <CustomBtn type="submit">SIGN IN</CustomBtn>
       </form>
     );
   }
