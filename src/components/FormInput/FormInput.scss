@@ -1,0 +1,44 @@
+.form-input {
+  margin-bottom: 6rem;
+  position: relative;
+
+  label {
+    display: block;
+  }
+
+  &__label{
+    z-index: 1;
+    position: absolute;
+    pointer-events: none;
+    top: 10px;
+    left: 9px;
+    color: #808080;
+    font-size: 20px;
+    transition: all .3s ease-out;
+
+    &.shrink {
+      top: -5px;
+      left: 0;
+      font-size: 14px;
+      color: #000;
+    }
+  }
+  &__input {
+    border: none;
+    border-bottom: 1px solid grey;
+    width: 100%;
+    padding: 1.5rem .5rem .5rem;
+    font-size: 2rem;;
+
+    &:focus {
+      outline: none;
+
+      & ~ .form-input__label {
+        top: -5px;
+        left: 0;
+        font-size: 14px;
+        color: #000;
+      }
+    }
+  }
+}
