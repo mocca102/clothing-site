@@ -1,0 +1,10 @@
+.custom-btn {
+  padding: 1.5rem 5rem;
+  background: #000;
+  color: #fff;
+  border: none;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
