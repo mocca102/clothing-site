@@ -1,6 +1,5 @@
-.sign-in {
-  flex: 1 0 auto;
-  margin-right: 10rem;
+.sign-up {
+  flex: 1 0 30%;
   &__title {
     font-size: 3rem;
     margin-bottom: 1.5rem;
@@ -9,11 +8,5 @@
   &__subtext {
     font-size: 2rem;
     margin-bottom: 3rem;
-  }
-
-  &__buttons {
-    & :last-child {
-      padding: 1.5rem 2rem;
-    }
   }
 }

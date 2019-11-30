@@ -2,7 +2,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import { auth } from './firebase/firebase.utils';
+import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 
 import './App.css';
 import Header from './components/Header/Header';
@@ -17,10 +17,25 @@ class App extends React.Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
-    this.unsubscribeFromAuth = auth.onAuthStateChanged((user) => {
-      this.setState({ currentUser: user });
+    // listen to auth state and fire at every change
+    // fire an async callback with userAuth as its argument
 
-      console.log(`${this.state.currentUser} from app`);
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+      if (userAuth) {
+        // QueryRefernce
+        const userRef = await createUserProfileDocument(userAuth);
+
+        /*  any time the snapshot change and at the same time it returns a snapshot
+        the first time it gets called */
+        userRef.onSnapshot((snapShot) => this.setState({
+          currentUser: {
+            id: snapShot.id,
+            ...snapShot.data(),
+          },
+        }, () => console.log(this.state)));
+      } else {
+        this.setState({ currentUser: null });
+      }
     });
   }
 
