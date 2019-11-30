@@ -1,8 +1,11 @@
 .custom-btn {
-  padding: 1.5rem 5rem;
+  padding: 1.5rem 4rem;
   background: #000;
   color: #fff;
   border: none;
+  &:first-child {
+    margin-right: 2rem;
+  }
 
   &:hover {
     opacity: 0.9;
