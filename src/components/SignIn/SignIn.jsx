@@ -1,11 +1,12 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 import './SignIn.scss';
 
 import FormInput from '../FormInput/FormInput';
 import CustomBtn from '../CustomBtn/CustomBtn';
 
-import { signInWithGoogle } from '../../firebase/firebase.utils';
+import { auth, signInWithGoogle } from '../../firebase/firebase.utils';
 
 class SignIn extends React.Component {
   state = { email: '', password: '' };
@@ -15,8 +16,17 @@ class SignIn extends React.Component {
     this.setState({ [name]: value });
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
+    const { history } = this.props;
+    const { email, password } = this.state;
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      this.setState({ email: '', password: '' });
+      history.push('/');
+    } catch (error) {
+      console.log('couldn\'t sign in with email and pass:', error.message);
+    }
   }
 
   renderForm = () => {
@@ -65,4 +75,4 @@ class SignIn extends React.Component {
   }
 }
 
-export default SignIn;
+export default withRouter(SignIn);

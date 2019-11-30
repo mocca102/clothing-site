@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 import './SignUp.scss';
 
@@ -22,6 +23,7 @@ class SignUp extends React.Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
+    const { history } = this.props;
     const { displayName, email, password, confirmPassword } = this.state;
 
     if (password !== confirmPassword) {
@@ -39,6 +41,8 @@ class SignUp extends React.Component {
         password: '',
         confirmPassword: '',
       });
+
+      history.push('/');
     } catch (error) {
       console.log(error);
     }
@@ -93,4 +97,4 @@ class SignUp extends React.Component {
   }
 }
 
-export default SignUp;
+export default withRouter(SignUp);
