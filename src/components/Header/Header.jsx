@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 
 import { auth } from '../../firebase/firebase.utils';
@@ -37,4 +38,8 @@ const Header = ({ currentUser, history }) => (
   </div>
 );
 
-export default withRouter(Header);
+const mapStateToProps = ({ user }) => ({
+  currentUser: user.currentUser,
+});
+
+export default connect(mapStateToProps)(withRouter(Header));
