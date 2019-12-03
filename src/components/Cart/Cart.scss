@@ -1,0 +1,15 @@
+.cart {
+  position: relative;
+  margin: 1rem 2rem;
+
+  &__logo {
+    width: 2.5rem;
+  }
+
+  &__number {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    font-size: 1.6rem;
+  }
+}

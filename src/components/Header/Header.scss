@@ -6,12 +6,15 @@
   justify-content: space-between;
   align-items: center;
 
+  a {
+    margin: 1rem 2rem;
+  }
+
   &__nav {
     display: flex;
 
     &-item {
       color: gray;
-      padding: 1rem 2rem;
       cursor: pointer;
     }
   }

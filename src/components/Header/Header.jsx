@@ -9,6 +9,8 @@ import { auth } from '../../firebase/firebase.utils';
 import { ReactComponent as Logo } from '../../assets/crown.svg';
 
 import './Header.scss';
+import Cart from '../Cart/Cart';
+import CartDropdown from '../Cart-dropdown/CartDropdown';
 
 const renderSignInOrOut = (currentUser) => (
   currentUser ? (
@@ -26,19 +28,22 @@ const renderSignInOrOut = (currentUser) => (
 );
 
 
-const Header = ({ currentUser }) => (
+const Header = ({ currentUser, hidden }) => (
   <div className="header">
     <Link to="/"><Logo className="header__logo">logo</Logo></Link>
     <ul className="header__nav">
       <Link to="/shop"><li className="header__nav-item">SHOP</li></Link>
       <Link to="/shop"><li className="header__nav-item">CONTACT</li></Link>
       {renderSignInOrOut(currentUser)}
+      <li className="header__nav-item"><Cart /></li>
     </ul>
+    {hidden ? null : <CartDropdown />}
   </div>
 );
 
-const mapStateToProps = ({ user }) => ({
-  currentUser: user.currentUser,
+const mapStateToProps = ({ user: { currentUser }, cart: { hidden } }) => ({
+  currentUser,
+  hidden,
 });
 
 export default connect(mapStateToProps)(Header);
