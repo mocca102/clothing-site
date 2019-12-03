@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import { connect } from 'react-redux';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 import { setCurrentUser } from './redux/user/user.actions';
 
@@ -42,17 +42,27 @@ class App extends React.Component {
   }
 
   render() {
+    const { currentUser } = this.props;
+
     return (
       <div className="App">
         <Header />
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/shop" component={ShopPage} />
-          <Route exact path="/signin" component={SignInUpPage} />
+          <Route
+            exact
+            path="/signin"
+            render={() => (currentUser ? (<Redirect to="/" />) : (<SignInUpPage />))}
+          />
         </Switch>
       </div>
     );
   }
 }
 
-export default connect(null, { setCurrentUser })(App);
+const mapStateToProps = (state) => ({
+  currentUser: state.user.currentUser,
+});
+
+export default connect(mapStateToProps, { setCurrentUser })(App);
