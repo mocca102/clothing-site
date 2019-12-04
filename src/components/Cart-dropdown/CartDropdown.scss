@@ -1,6 +1,6 @@
 .cart-dropdown {
   width: 25rem;
-  height: 32rem;
+  height: 40rem;
   display: flex;
   flex-direction: column;
   padding: 2rem;
@@ -12,7 +12,23 @@
   background: #fff;
   
   &__items {
+    overflow: scroll;
+    overflow-x: hidden;
+    padding-right: 20px;
+    margin-bottom: 1.5rem;
 
+    &::-webkit-scrollbar {
+        width: 7px;
+      &-track {
+        background: transparent;
+      }
+
+      &-thumb {
+        background: grey;
+        border-radius: 50px;
+      }
+
+    }
   }
 
   button{ 

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import SHOP_DATA from '../../assets/shop-data';
-import ShopCollectionPreview from '../../components/Shop-collection-preview/ShopCollectionPreview'
+import ShopCollectionPreview from '../../components/Shop-collection-preview/ShopCollectionPreview';
 import '../PageContainer.scss';
 import './ShopPage.scss';
 
@@ -14,7 +14,7 @@ class ShopPage extends React.Component {
   renderCollections = () => {
     const { collections } = this.state;
 
-    return collections.map(({ id, items, title, routeName}) => (
+    return collections.map(({ id, items, title, routeName }) => (
       <ShopCollectionPreview
         key={id}
         items={items}

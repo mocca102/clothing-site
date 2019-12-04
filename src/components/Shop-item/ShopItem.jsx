@@ -1,18 +1,28 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import './ShopItem.scss';
 
-const ShopItem = ({ name, imageUrl, price }) => (
-  <div className="shop-item">
-    <div
-      className="shop-item__bgImage"
-      style={{ backgroundImage: `url(${imageUrl})` }}
-    />
-    <div className="shop-item__footer">
-      <p>{name}</p>
-      <span>{`$${price}`}</span>
-    </div>
-    <button type="button" className="shop-item__btn">ADD TO CART</button>
-  </div>
-);
+import { addItem } from '../../redux/cart/cart.actions';
 
-export default ShopItem;
+import CustomBtn from '../CustomBtn/CustomBtn';
+
+const ShopItem = ({ item, addItem }) => {
+  const { name, imageUrl, price } = item;
+
+  return (
+    <div className="shop-item">
+      <div
+        className="shop-item__bgImage"
+        style={{ backgroundImage: `url(${imageUrl})` }}
+      />
+      <div className="shop-item__footer">
+        <p>{name}</p>
+        <span>{`$${price}`}</span>
+      </div>
+      <CustomBtn onClick={() => addItem(item)} type="button" inverted>ADD TO CART</CustomBtn>
+    </div>
+  )
+};
+
+export default connect(null, { addItem })(ShopItem);

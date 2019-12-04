@@ -7,12 +7,10 @@ import './ShopCollectionPreview.scss';
 const ShopCollectionPreview = ({ items, title, routeName, match }) => {
   const renderItems = () => (
     items.filter((item, i) => i < 4)
-      .map(({ id, name, imageUrl, price }) => (
+      .map((item) => (
         <ShopItem
-          key={id}
-          name={name}
-          imageUrl={imageUrl}
-          price={price}
+          key={item.id}
+          item={item}
         />
       ))
   );

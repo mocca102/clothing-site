@@ -7,22 +7,14 @@
   position: relative;
 
   &:hover {
-    filter: opacity(.8); 
+    filter: opacity(.9); 
 
-    .shop-item__btn {
+    button {
       cursor: pointer;
       align-self: center;
       display: block;
       position: absolute;
       bottom: 5rem;
-      background: rgba($color: white, $alpha: 0.7);
-      padding: 1.5rem 6rem;
-      border: none;
-      font-size: 1.5rem;
-      &:hover {
-        background: rgba($color: #000000, $alpha: .9);
-        color: white;
-      }
     }
   }
   

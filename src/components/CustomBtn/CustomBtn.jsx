@@ -3,11 +3,11 @@ import React from 'react';
 
 import './CustomBtn.scss';
 
-const CustomBtn = ({ children, type, signInWithGoogle }) => (
+const CustomBtn = ({ children, type, onClick, inverted }) => (
   <button
-    onClick={signInWithGoogle}
+    onClick={onClick}
     type={type}
-    className="custom-btn"
+    className={`custom-btn ${inverted ? 'inverted' : ''}`}
   >
     {children}
   </button>
