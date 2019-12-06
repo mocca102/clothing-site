@@ -1,6 +1,9 @@
 .cart {
   position: relative;
   margin: 1rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &__logo {
     width: 2.5rem;
@@ -8,8 +11,7 @@
 
   &__number {
     position: absolute;
-    top: 5px;
-    left: 10px;
+    top: 6px;
     font-size: 1.6rem;
   }
 }

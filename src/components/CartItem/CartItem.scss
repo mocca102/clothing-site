@@ -11,5 +11,9 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    & span:last-child {
+      text-align: right;
+    } 
   }
 }

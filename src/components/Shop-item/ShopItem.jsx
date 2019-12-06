@@ -22,7 +22,7 @@ const ShopItem = ({ item, addItem }) => {
       </div>
       <CustomBtn onClick={() => addItem(item)} type="button" inverted>ADD TO CART</CustomBtn>
     </div>
-  )
+  );
 };
 
 export default connect(null, { addItem })(ShopItem);
