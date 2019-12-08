@@ -1,0 +1,38 @@
+.table-item {
+  td {
+    color: black;
+    font-size: 2rem;
+    font-weight: lighter;
+    padding: 1rem 2rem;
+    text-align: center;
+    border-bottom: 1px solid grey;
+
+    div {
+      display: flex;
+      justify-content: center;
+    }
+  }
+  td:last-child {
+    padding-right: 1rem;
+    text-align: right;
+  }
+  td:first-child {
+    padding-left: 0;
+  }
+}
+
+.table-img{
+  width: 11rem;
+}
+
+.quantity-btn {
+  padding:5px;
+  cursor: pointer;
+  outline: none;
+}
+
+.delete-btn {
+  font-size: 2rem;
+  cursor: pointer;
+  outline: none;
+}

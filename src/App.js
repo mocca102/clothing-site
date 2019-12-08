@@ -14,6 +14,7 @@ import Header from './components/Header/Header';
 import HomePage from './pages/home-page/HomePage';
 import ShopPage from './pages/shop-page/ShopPage';
 import SignInUpPage from './pages/signInUp-page/SignInUpPage';
+import CheckoutPage from './pages/checkout-page/CheckoutPage';
 
 import './pages/signInUp-page/SignInUpPage.scss';
 
@@ -53,6 +54,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/shop" component={ShopPage} />
+          <Route exact path="/checkout" component={CheckoutPage} />
           <Route
             exact
             path="/signin"

@@ -26,7 +26,7 @@ const renderSignInOrOut = (currentUser) => (
       SIGN OUT
     </li>
   ) : (
-    <Link to="/signin"><li className="header__nav-item">SIGN IN</li></Link>
+    <Link to="/signin" className="header__nav-item"><li>SIGN IN</li></Link>
   )
 );
 
@@ -35,8 +35,8 @@ const Header = ({ currentUser, hidden }) => (
   <div className="header">
     <Link to="/"><Logo className="header__logo">logo</Logo></Link>
     <ul className="header__nav">
-      <Link to="/shop"><li className="header__nav-item">SHOP</li></Link>
-      <Link to="/shop"><li className="header__nav-item">CONTACT</li></Link>
+      <Link to="/shop" className="header__nav-item"><li>SHOP</li></Link>
+      <Link to="/shop" className="header__nav-item"><li>CONTACT</li></Link>
       {renderSignInOrOut(currentUser)}
       <li className="header__nav-item"><Cart /></li>
     </ul>

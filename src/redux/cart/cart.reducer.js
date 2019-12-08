@@ -13,9 +13,9 @@ const cartReducer = (state = INITIAL_STATE, action) => {
     case 'ADD_ITEM':
       /* if the cart item already exists, return the same array of items, if not,
        you increment the quantity of the added item. but you can't directly mutate
-      the object or use shadow variables according to redux's immutable update 
+      the object or use shadow variables according to redux's immutable update
       patterns thus using map since it returns a new array */
-      if (state.cartItems.find((e) => e.id === action.payload.id)) {
+      if (state.cartItems.find((item) => item.id === action.payload.id)) {
         return {
           ...state,
           cartItems: [
@@ -31,6 +31,24 @@ const cartReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         cartItems: [...state.cartItems, { ...action.payload, quantity: 1 }],
+      };
+    case 'REMOVE_ITEM':
+      return {
+        ...state,
+        cartItems: [
+          ...state.cartItems.map(
+            (item) => ((item.id === action.payload.id) && (item.quantity > 1)
+              ? ({ ...item, quantity: item.quantity - 1 })
+              : (item)),
+          ),
+        ],
+      };
+    case 'CLEAR_ITEM':
+      return {
+        ...state,
+        cartItems: [
+          ...state.cartItems.filter((item) => item.id !== action.payload.id),
+        ],
       };
     default:
       return state;

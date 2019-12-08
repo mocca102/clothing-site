@@ -13,9 +13,15 @@
   &__nav {
     display: flex;
 
-    &-item {
+    &-item,
+    &-item:hover,
+    &-item:visited {
       color: gray;
       cursor: pointer;
+    }
+
+    &-item:last-child {
+      align-self: center;
     }
   }
 

@@ -27,3 +27,8 @@ a:visited {
 ul {
   list-style: none;
 }
+
+button {
+  background: none;
+  border: none;
+}
