@@ -1,22 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import './ShopItem.scss';
+import './ShopCollectionItem.scss';
 
 import { addItem } from '../../redux/cart/cart.actions';
 
 import CustomBtn from '../CustomBtn/CustomBtn';
 
-const ShopItem = ({ item, addItem }) => {
+const ShopCollectionItem = ({ item, addItem }) => {
   const { name, imageUrl, price } = item;
 
   return (
-    <div className="shop-item">
+    <div className="shop-collection-item shop">
       <div
-        className="shop-item__bgImage"
+        className="shop-collection-item__bgImage"
         style={{ backgroundImage: `url(${imageUrl})` }}
       />
-      <div className="shop-item__footer">
+      <div className="shop-collection-item__footer">
         <p>{name}</p>
         <span>{`$${price}`}</span>
       </div>
@@ -25,4 +25,4 @@ const ShopItem = ({ item, addItem }) => {
   );
 };
 
-export default connect(null, { addItem })(ShopItem);
+export default connect(null, { addItem })(ShopCollectionItem);

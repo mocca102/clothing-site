@@ -4,10 +4,11 @@ import { connect } from 'react-redux';
 import { selectCollection } from '../../redux/shop/shop.selectors';
 
 import './Collection.scss';
+import CollectionItem from '../../components/ShopCollectionItem/ShopCollectionItem';
 
 const Collection = ({ collection }) => (
   <div>
-    {collection.title}
+    {collection.items.map((item) => <CollectionItem key={item.id} item={item} />)}
   </div>
 );
 

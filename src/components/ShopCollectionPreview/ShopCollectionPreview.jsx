@@ -1,14 +1,14 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 
-import ShopItem from '../Shop-item/ShopItem';
+import ShopCollectionItem from '../ShopCollectionItem/ShopCollectionItem';
 import './ShopCollectionPreview.scss';
 
 const ShopCollectionPreview = ({ items, title, routeName, match }) => {
   const renderItems = () => (
     items.filter((item, i) => i < 4)
       .map((item) => (
-        <ShopItem
+        <ShopCollectionItem
           key={item.id}
           item={item}
         />

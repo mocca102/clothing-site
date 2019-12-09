@@ -5,10 +5,10 @@ import { createStructuredSelector } from 'reselect';
 import { selectShopDataCollectionsAsArray } from '../../redux/shop/shop.selectors';
 
 
-import './CollectionsOverview.scss';
-import ShopCollectionPreview from '../Shop-collection-preview/ShopCollectionPreview';
+import './ShopCollectionsOverview.scss';
+import ShopCollectionPreview from '../ShopCollectionPreview/ShopCollectionPreview';
 
-const CollectionsOverview = ({ collections }) => (
+const ShopCollectionsOverview = ({ collections }) => (
   collections.map(({ id, items, title, routeName }) => (
     <ShopCollectionPreview
       key={id}
@@ -23,4 +23,4 @@ const mapStateToProps = createStructuredSelector({
   collections: selectShopDataCollectionsAsArray,
 });
 
-export default connect(mapStateToProps)(CollectionsOverview);
+export default connect(mapStateToProps)(ShopCollectionsOverview);
