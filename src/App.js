@@ -18,6 +18,7 @@ import CheckoutPage from './pages/checkout-page/CheckoutPage';
 
 import './pages/signInUp-page/SignInUpPage.scss';
 
+
 class App extends React.Component {
   componentDidMount() {
     // listen to auth state and fire at every change
@@ -53,7 +54,7 @@ class App extends React.Component {
         <Header />
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route exact path="/shop" component={ShopPage} />
+          <Route path="/shop" component={ShopPage} />
           <Route exact path="/checkout" component={CheckoutPage} />
           <Route
             exact
