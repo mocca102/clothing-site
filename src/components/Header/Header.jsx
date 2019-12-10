@@ -21,7 +21,7 @@ const renderSignInOrOut = (currentUser) => (
       onClick={() => {
         auth.signOut();
       }}
-      className="header__nav-item"
+      className="header__nav-item sign-out"
     >
       SIGN OUT
     </li>
