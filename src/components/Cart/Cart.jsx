@@ -11,7 +11,13 @@ import { ReactComponent as ShoppingIcon } from '../../assets/shopping-bag.svg';
 import './Cart.scss';
 
 const Cart = ({ toggleCart, itemsCount }) => (
-  <div className="cart" onClick={toggleCart}>
+  <div
+    role="button"
+    className="cart"
+    onClick={toggleCart}
+    onKeyDown={(e) => (e.key === 'Enter' ? toggleCart() : null)}
+    tabIndex="0"
+  >
     <ShoppingIcon className="cart__logo" />
     <span className="cart__number">{itemsCount}</span>
   </div>

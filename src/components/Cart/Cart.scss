@@ -3,15 +3,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: rgb(175, 161, 161);
-
+  color: black;
   &__logo {
     width: 2.5rem;
   }
 
   &__number {
     position: absolute;
-    top: 6px;
+    top: 7px;
     font-size: 1.6rem;
+    line-height: 1;
   }
 }

@@ -7,7 +7,7 @@ import './Collection.scss';
 import CollectionItem from '../../components/ShopCollectionItem/ShopCollectionItem';
 
 const Collection = ({ collection }) => (
-  <div>
+  <div className="collection">
     {collection.items.map((item) => <CollectionItem key={item.id} item={item} />)}
   </div>
 );

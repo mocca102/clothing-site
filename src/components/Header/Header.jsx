@@ -10,7 +10,7 @@ import { ReactComponent as Logo } from '../../assets/crown.svg';
 
 import './Header.scss';
 import Cart from '../Cart/Cart';
-import CartDropdown from '../Cart-dropdown/CartDropdown';
+import CartDropdown from '../CartDropdown/CartDropdown';
 
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 import { selectCartHidden } from '../../redux/cart/cart.selectors';
@@ -36,7 +36,7 @@ const Header = ({ currentUser, hidden }) => (
     <Link to="/"><Logo className="header__logo">logo</Logo></Link>
     <ul className="header__nav">
       <Link to="/shop" className="header__nav-item"><li>SHOP</li></Link>
-      <Link to="/shop" className="header__nav-item"><li>CONTACT</li></Link>
+      {/* <Link to="/" className="header__nav-item"><li>CONTACT</li></Link> */}
       {renderSignInOrOut(currentUser)}
       <li className="header__nav-item"><Cart /></li>
     </ul>
