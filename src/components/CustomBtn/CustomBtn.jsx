@@ -1,16 +1,12 @@
 /* eslint-disable react/button-has-type */
 import React from 'react';
 
-import './CustomBtn.scss';
+import CustomBtnContainer from './CustomBtn.styles';
 
 const CustomBtn = ({ children, type, onClick, inverted }) => (
-  <button
-    onClick={onClick}
-    type={type}
-    className={`custom-btn ${inverted ? 'inverted' : ''}`}
-  >
+  <CustomBtnContainer onClick={onClick} type={type} inverted={inverted}>
     {children}
-  </button>
+  </CustomBtnContainer>
 );
 
 export default CustomBtn;

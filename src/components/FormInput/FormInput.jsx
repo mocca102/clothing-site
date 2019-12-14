@@ -1,23 +1,21 @@
 import React from 'react';
-
-import './FormInput.scss';
+import FormInputContainer from './FormInput.styles';
 
 const FormInput = ({ label, type, name, value, handleChange }) => (
-  <div className="form-input">
+  <FormInputContainer shrink={value.length}>
     <label htmlFor={name}>
       <input
-        className="form-input__input"
         type={type}
         name={name}
         onChange={handleChange}
         value={value}
         required
       />
-      <span className={`${value.length ? 'shrink' : ''} form-input__label`}>
+      <span>
         { label && label.length > 0 ? label : null }
       </span>
     </label>
-  </div>
+  </FormInputContainer>
 );
 
 export default FormInput;

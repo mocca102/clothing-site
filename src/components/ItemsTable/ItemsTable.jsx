@@ -6,14 +6,14 @@ import { selectCartItems, selectTotalCash } from '../../redux/cart/cart.selector
 
 import { addItem } from '../../redux/cart/cart.actions';
 
-import './ItemsTable.scss';
+import ItemsTableStyles from './ItemsTable.styles';
 
 import TableItem from '../TableItem/TableItem';
 
 const ItemsTable = ({ cartItems, totalCash }) => (
-  <table className="items-table">
+  <ItemsTableStyles>
     <thead>
-      <tr className="items-table__header">
+      <tr>
         <th>Product</th>
         <th>Description</th>
         <th>Quantity</th>
@@ -21,17 +21,16 @@ const ItemsTable = ({ cartItems, totalCash }) => (
         <th>Remove</th>
       </tr>
     </thead>
-
     <tbody>
       {cartItems.map((item) => <TableItem key={item.id} item={item} />)}
     </tbody>
-    <tfoot className="items-table__footer">
+    <tfoot>
       <tr>
         <th colSpan="2">Total Cash:</th>
         <td colSpan="">{`$${totalCash}`}</td>
       </tr>
     </tfoot>
-  </table>
+  </ItemsTableStyles>
 );
 
 const mapStateToProps = createStructuredSelector({

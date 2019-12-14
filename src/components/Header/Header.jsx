@@ -8,7 +8,8 @@ import { createStructuredSelector } from 'reselect';
 import { auth } from '../../firebase/firebase.utils';
 import { ReactComponent as Logo } from '../../assets/crown.svg';
 
-import './Header.scss';
+import { HeaderContainer, NavContainer } from './Header.styles';
+
 import Cart from '../Cart/Cart';
 import CartDropdown from '../CartDropdown/CartDropdown';
 
@@ -18,30 +19,32 @@ import { selectCartHidden } from '../../redux/cart/cart.selectors';
 const renderSignInOrOut = (currentUser) => (
   currentUser ? (
     <li
+      style={{ marginRight: '1.5rem' }}
       onClick={() => {
         auth.signOut();
       }}
-      className="header__nav-item sign-out"
     >
       SIGN OUT
     </li>
   ) : (
-    <Link to="/signin" className="header__nav-item"><li>SIGN IN</li></Link>
+    <Link to="/signin"><li>SIGN IN</li></Link>
   )
 );
 
 
 const Header = ({ currentUser, hidden }) => (
-  <div className="header">
-    <Link to="/"><Logo className="header__logo">logo</Logo></Link>
-    <ul className="header__nav">
-      <Link to="/shop" className="header__nav-item"><li>SHOP</li></Link>
+  <HeaderContainer>
+    <Link to="/">
+      <Logo>logo</Logo>
+    </Link>
+    <NavContainer>
+      <Link to="/shop"><li>SHOP</li></Link>
       {/* <Link to="/" className="header__nav-item"><li>CONTACT</li></Link> */}
       {renderSignInOrOut(currentUser)}
-      <li className="header__nav-item"><Cart /></li>
-    </ul>
+    </NavContainer>
+    <Cart />
     {hidden ? null : <CartDropdown />}
-  </div>
+  </HeaderContainer>
 );
 
 const mapStateToProps = createStructuredSelector({

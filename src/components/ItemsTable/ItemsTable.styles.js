@@ -1,8 +1,10 @@
-.items-table {
+import styled from 'styled-components';
+
+export default styled.table`
   border-collapse: collapse;
   color: rgb(32, 31, 31);
 
-  &__header {
+  thead tr {
     border-bottom: 1px solid grey;
     th {
       text-align: left;
@@ -16,8 +18,8 @@
       }
     }
   }
-  
-  &__footer {
+
+  tfoot {
     th {
       padding: 3rem;
       padding-right: 0;
@@ -27,4 +29,4 @@
       font-size: 4rem;
     }
   }
-}
+`;
