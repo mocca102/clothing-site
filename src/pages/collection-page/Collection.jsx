@@ -8,7 +8,11 @@ import CollectionItem from '../../components/ShopCollectionItem/ShopCollectionIt
 
 const Collection = ({ collection }) => (
   <div className="collection">
-    {collection.items.map((item) => <CollectionItem key={item.id} item={item} />)}
+    {
+      collection
+        ? collection.items.map((item) => <CollectionItem key={item.id} item={item} />)
+        : 'loading'
+    }
   </div>
 );
 

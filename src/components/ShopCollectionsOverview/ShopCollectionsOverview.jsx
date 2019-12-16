@@ -8,16 +8,21 @@ import { selectShopDataCollectionsAsArray } from '../../redux/shop/shop.selector
 import './ShopCollectionsOverview.scss';
 import ShopCollectionPreview from '../ShopCollectionPreview/ShopCollectionPreview';
 
-const ShopCollectionsOverview = ({ collections }) => (
-  collections.map(({ id, items, title, routeName }) => (
-    <ShopCollectionPreview
-      key={id}
-      items={items}
-      title={title}
-      routeName={routeName}
-    />
-  ))
-);
+const ShopCollectionsOverview = ({ collections }) => {
+  if (collections) {
+    return (
+      collections.map(({ id, items, title, routeName }) => (
+        <ShopCollectionPreview
+          key={id}
+          items={items}
+          title={title}
+          routeName={routeName}
+        />
+      ))
+    );
+  }
+  return 'loading';
+};
 
 const mapStateToProps = createStructuredSelector({
   collections: selectShopDataCollectionsAsArray,

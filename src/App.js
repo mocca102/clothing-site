@@ -18,8 +18,11 @@ import CheckoutPage from './pages/checkout-page/CheckoutPage';
 
 import './pages/signInUp-page/SignInUpPage.scss';
 
+// import SHOP_DATA from './redux/shop/shop-data';
 
 class App extends React.Component {
+  // unsubscribeFromAuth = null;
+
   componentDidMount() {
     // listen to auth state and fire at every change
     // fire an async callback with userAuth as its argument

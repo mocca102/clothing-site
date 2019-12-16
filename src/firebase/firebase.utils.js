@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import firebase from 'firebase/app';
 
 import 'firebase/auth';
@@ -51,11 +52,42 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
         ...additionalData,
       });
     } catch (error) {
-      console.log('error creating user', error.message);
+      // console.log('error creating user', error.message);
     }
   }
 
   return userRef;
+};
+
+export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
+  const collectionRef = firestore.collection(collectionKey);
+
+  const batch = firestore.batch();
+
+  objectsToAdd.forEach((obj) => {
+    const newDocRef = collectionRef.doc();
+    batch.set(newDocRef, obj);
+  });
+
+  return batch.commit();
+};
+
+export const convertCollectionsSnapshotToMap = (collections) => {
+  const transformedCollection = collections.docs.map((docSnapshot) => {
+    const { title, items } = docSnapshot.data();
+
+    return {
+      title,
+      items,
+      id: docSnapshot.id,
+      routeName: encodeURI(title.toLowerCase()),
+    };
+  });
+
+  return transformedCollection.reduce((accumulator, collection) => {
+    accumulator[collection.title] = collection;
+    return accumulator;
+  }, {});
 };
 
 export default firebase;
