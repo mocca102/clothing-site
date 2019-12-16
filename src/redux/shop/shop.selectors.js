@@ -14,5 +14,5 @@ export const selectShopDataCollectionsAsArray = createSelector(
 
 export const selectCollection = (urlParamsId) => createSelector(
   [selectShopDataCollections],
-  (collections) => collections[urlParamsId],
+  (collections) => (collections ? collections[urlParamsId] : null),
 );

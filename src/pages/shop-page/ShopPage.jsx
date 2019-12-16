@@ -1,3 +1,5 @@
+/* eslint-disable no-shadow */
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
@@ -8,10 +10,17 @@ import ShopCollectionsOverView from '../../components/ShopCollectionsOverview/Sh
 import Collection from '../collection-page/Collection';
 import { firestore, convertCollectionsSnapshotToMap } from '../../firebase/firebase.utils';
 import addShopData from '../../redux/shop/shop.actions';
+import WithSpinner from '../../components/WithSpinner/WithSpinner';
+
+const ShopCollectionsOverViewWithSpinner = WithSpinner(ShopCollectionsOverView);
+const CollectionWithSpinner = WithSpinner(Collection);
+
 
 // nested routes. using :param
 // shop page won't be rendered (also its children) unless we access /shop
 class ShopPage extends React.Component {
+  state = { loading: true }
+
   unsubscribeFromSnapshot = null;
 
   componentDidMount() {
@@ -22,6 +31,7 @@ class ShopPage extends React.Component {
       async (snapshot) => {
         const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
         addShopData(collectionsMap);
+        this.setState({ loading: false });
         console.log(collectionsMap);
       },
     );
@@ -29,10 +39,18 @@ class ShopPage extends React.Component {
 
   render() {
     const { match } = this.props;
+    const { loading } = this.state;
     return (
       <div className="page-container shop-page">
-        <Route exact path={`${match.path}`} component={ShopCollectionsOverView} />
-        <Route path={`${match.path}/:collectionId`} component={Collection} />
+        <Route
+          exact
+          path={`${match.path}`}
+          render={(props) => <ShopCollectionsOverViewWithSpinner isLoading={loading} {...props} />}
+        />
+        <Route
+          path={`${match.path}/:collectionId`}
+          render={(props) => <CollectionWithSpinner isLoading={loading} {...props} />}
+        />
       </div>
     );
   }
