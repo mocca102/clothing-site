@@ -32,7 +32,7 @@ class ShopPage extends React.Component {
         const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
         addShopData(collectionsMap);
         this.setState({ loading: false });
-        console.log(collectionsMap);
+        // console.log(collectionsMap);
       },
     );
   }
