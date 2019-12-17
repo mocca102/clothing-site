@@ -1,10 +1,9 @@
 import React from 'react';
-import './HomePage.scss';
-import '../PageContainer.scss';
+import PageContainer from '../PageContainer.styles';
 import Directory from '../../components/Directory/Directory';
 
 export default () => (
-  <div className="page-container">
+  <PageContainer>
     <Directory />
-  </div>
+  </PageContainer>
 );

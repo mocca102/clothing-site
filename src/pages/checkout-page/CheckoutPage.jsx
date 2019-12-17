@@ -1,13 +1,12 @@
 import React from 'react';
 
-import './CheckoutPage.scss';
-
+import CheckoutPageContainer from './CheckoutPage.styles';
 import ItemsTable from '../../components/ItemsTable/ItemsTable';
 
 const CheckoutPage = () => (
-  <div className="checkout-page">
+  <CheckoutPageContainer>
     <ItemsTable />
-  </div>
+  </CheckoutPageContainer>
 );
 
 export default CheckoutPage;

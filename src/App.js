@@ -17,7 +17,6 @@ import ShopPage from './pages/shop-page/ShopPage';
 import SignInUpPage from './pages/signInUp-page/SignInUpPage';
 import CheckoutPage from './pages/checkout-page/CheckoutPage';
 
-import './pages/signInUp-page/SignInUpPage.scss';
 
 class App extends React.Component {
   unsubscribeFromAuth = null;

@@ -3,17 +3,17 @@ import { connect } from 'react-redux';
 
 import { selectCollection } from '../../redux/shop/shop.selectors';
 
-import './Collection.scss';
+import CollectionContainer from './Collection.styles';
 import CollectionItem from '../../components/ShopCollectionItem/ShopCollectionItem';
 
 const Collection = ({ collection }) => (
-  <div className="collection">
+  <CollectionContainer>
     {
       collection
         ? collection.items.map((item) => <CollectionItem key={item.id} item={item} />)
         : 'loading'
     }
-  </div>
+  </CollectionContainer>
 );
 
 const mapStateToProps = (state, ownProps) => ({

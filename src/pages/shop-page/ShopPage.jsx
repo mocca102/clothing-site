@@ -4,8 +4,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 
-import '../PageContainer.scss';
-import './ShopPage.scss';
+import PageContainer from '../PageContainer.styles';
 import ShopCollectionsOverView from '../../components/ShopCollectionsOverview/ShopCollectionsOverview';
 import Collection from '../collection-page/Collection';
 import { firestore, convertCollectionsSnapshotToMap } from '../../firebase/firebase.utils';
@@ -41,7 +40,7 @@ class ShopPage extends React.Component {
     const { match } = this.props;
     const { loading } = this.state;
     return (
-      <div className="page-container shop-page">
+      <PageContainer>
         <Route
           exact
           path={`${match.path}`}
@@ -51,7 +50,7 @@ class ShopPage extends React.Component {
           path={`${match.path}/:collectionId`}
           render={(props) => <CollectionWithSpinner isLoading={loading} {...props} />}
         />
-      </div>
+      </PageContainer>
     );
   }
 }
