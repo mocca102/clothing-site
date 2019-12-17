@@ -31,7 +31,6 @@ class App extends React.Component {
       if (userAuth) {
         // QueryRefernce
         const userRef = await createUserProfileDocument(userAuth);
-
         /*  any time the snapshot change and at the same time it returns a snapshot
         the first time it gets called */
         userRef.onSnapshot((snapShot) => setCurrentUser({
