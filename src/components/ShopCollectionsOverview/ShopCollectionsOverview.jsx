@@ -21,7 +21,7 @@ const ShopCollectionsOverview = ({ collections }) => {
       ))
     );
   }
-  return 'loading';
+  // return 'loading';
 };
 
 const mapStateToProps = createStructuredSelector({

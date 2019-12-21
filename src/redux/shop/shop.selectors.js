@@ -16,3 +16,8 @@ export const selectCollection = (urlParamsId) => createSelector(
   [selectShopDataCollections],
   (collections) => (collections ? collections[urlParamsId] : null),
 );
+
+export const selectIsShopLoading = createSelector(
+  [selectShopData],
+  (shopData) => shopData.loading,
+);

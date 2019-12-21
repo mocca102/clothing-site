@@ -3,13 +3,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
+import { createStructuredSelector } from 'reselect';
 
 import PageContainer from '../PageContainer.styles';
 import ShopCollectionsOverView from '../../components/ShopCollectionsOverview/ShopCollectionsOverview';
 import Collection from '../collection-page/Collection';
-import { firestore, convertCollectionsSnapshotToMap } from '../../firebase/firebase.utils';
-import addShopData from '../../redux/shop/shop.actions';
 import WithSpinner from '../../components/WithSpinner/WithSpinner';
+
+import fetchShopData from '../../redux/shop/shop.actions';
+import { selectIsShopLoading, selectShopDataCollectionsAsArray } from '../../redux/shop/shop.selectors';
 
 const ShopCollectionsOverViewWithSpinner = WithSpinner(ShopCollectionsOverView);
 const CollectionWithSpinner = WithSpinner(Collection);
@@ -18,27 +20,16 @@ const CollectionWithSpinner = WithSpinner(Collection);
 // nested routes. using :param
 // shop page won't be rendered (also its children) unless we access /shop
 class ShopPage extends React.Component {
-  state = { loading: true }
-
-  unsubscribeFromSnapshot = null;
-
   componentDidMount() {
-    const { addShopData } = this.props;
-    const collectionRef = firestore.collection('collections');
-
-    this.unsubscribeFromSnapshot = collectionRef.onSnapshot(
-      async (snapshot) => {
-        const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
-        addShopData(collectionsMap);
-        this.setState({ loading: false });
-        // console.log(collectionsMap);
-      },
-    );
+    const { collections } = this.props;
+    if (!collections) {
+      const { fetchShopData } = this.props;
+      fetchShopData();
+    }
   }
 
   render() {
-    const { match } = this.props;
-    const { loading } = this.state;
+    const { match, loading } = this.props;
     return (
       <PageContainer>
         <Route
@@ -55,4 +46,9 @@ class ShopPage extends React.Component {
   }
 }
 
-export default connect(null, { addShopData })(ShopPage);
+const mapStateToProps = createStructuredSelector({
+  loading: selectIsShopLoading,
+  collections: selectShopDataCollectionsAsArray,
+});
+
+export default connect(mapStateToProps, { fetchShopData })(ShopPage);

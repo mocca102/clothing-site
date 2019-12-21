@@ -8,6 +8,7 @@ import CollectionItem from '../../components/ShopCollectionItem/ShopCollectionIt
 
 const Collection = ({ collection }) => (
   <CollectionContainer>
+    <h2>{collection.title}</h2>
     {
       collection
         ? collection.items.map((item) => <CollectionItem key={item.id} item={item} />)
