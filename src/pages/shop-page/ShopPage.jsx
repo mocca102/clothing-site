@@ -10,7 +10,7 @@ import ShopCollectionsOverView from '../../components/ShopCollectionsOverview/Sh
 import Collection from '../collection-page/Collection';
 import WithSpinner from '../../components/WithSpinner/WithSpinner';
 
-import fetchShopData from '../../redux/shop/shop.actions';
+import { fetchShopDataStart } from '../../redux/shop/shop.actions';
 import { selectIsShopLoading, selectShopDataCollectionsAsArray } from '../../redux/shop/shop.selectors';
 
 const ShopCollectionsOverViewWithSpinner = WithSpinner(ShopCollectionsOverView);
@@ -23,8 +23,8 @@ class ShopPage extends React.Component {
   componentDidMount() {
     const { collections } = this.props;
     if (!collections) {
-      const { fetchShopData } = this.props;
-      fetchShopData();
+      const { fetchShopDataStart } = this.props;
+      fetchShopDataStart();
     }
   }
 
@@ -51,4 +51,4 @@ const mapStateToProps = createStructuredSelector({
   collections: selectShopDataCollectionsAsArray,
 });
 
-export default connect(mapStateToProps, { fetchShopData })(ShopPage);
+export default connect(mapStateToProps, { fetchShopDataStart })(ShopPage);

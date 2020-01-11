@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
+import createSagaMiddleware from 'redux-saga';
 
 // persistStore allows the browser to cache our store but it needs configuration
 import { persistStore, persistReducer } from 'redux-persist';
@@ -9,11 +9,14 @@ import storage from 'redux-persist/lib/storage';
 
 import logger from 'redux-logger';
 
+import { shopSaga } from './shop/shop.sagas';
+
 // we need to persist our reducer as well
 import rootReducer from './root-reducer';
 
+const sagaMiddleware = createSagaMiddleware();
 
-const middlewares = [thunk];
+const middlewares = [sagaMiddleware];
 
 if (process.env.NODE_ENV === 'development') {
   middlewares.push(logger);
@@ -31,6 +34,8 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 // PERSIST your store, saving in local storage
 export const store = createStore(persistedReducer, applyMiddleware(...middlewares));
+
+sagaMiddleware.run(shopSaga);
 
 // REHYDRATE, giving the data back on refresh or reloasd
 export const persistor = persistStore(store);
