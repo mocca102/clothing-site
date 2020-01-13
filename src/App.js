@@ -7,7 +7,6 @@ import { createStructuredSelector } from 'reselect';
 
 import { setCurrentUser } from './redux/user/user.actions';
 
-import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import { selectCurrentUser } from './redux/user/user.selectors';
 
 import './App.css';
@@ -25,21 +24,21 @@ class App extends React.Component {
     // listen to auth state and fire at every change
     // fire an async callback with userAuth as its argument
 
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
-      const { setCurrentUser } = this.props;
-      if (userAuth) {
-        // QueryRefernce
-        const userRef = await createUserProfileDocument(userAuth);
-        /*  any time the snapshot change and at the same time it returns a snapshot
-        the first time it gets called */
-        userRef.onSnapshot((snapShot) => setCurrentUser({
-          id: snapShot.id,
-          ...snapShot.data(),
-        }));
-      } else {
-        setCurrentUser(userAuth); // null
-      }
-    });
+    // this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+    //   const { setCurrentUser } = this.props;
+    //   if (userAuth) {
+    //     // QueryRefernce
+    //     const userRef = await createUserProfileDocument(userAuth);
+    //     /*  any time the snapshot change and at the same time it returns a snapshot
+    //     the first time it gets called */
+    //     userRef.onSnapshot((snapShot) => setCurrentUser({
+    //       id: snapShot.id,
+    //       ...snapShot.data(),
+    //     }));
+    //   } else {
+    //     setCurrentUser(userAuth); // null
+    //   }
+    // });
   }
 
   componentWillUnmount() {

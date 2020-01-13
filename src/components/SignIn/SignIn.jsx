@@ -1,12 +1,15 @@
+/* eslint-disable no-shadow */
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import './SignIn.scss';
 
 import FormInput from '../FormInput/FormInput';
 import CustomBtn from '../CustomBtn/CustomBtn';
 
-import { auth, signInWithGoogle } from '../../firebase/firebase.utils';
+import { auth } from '../../firebase/firebase.utils';
+import { googleSignInStart } from '../../redux/user/user.actions';
 
 class SignIn extends React.Component {
   state = { email: '', password: '' };
@@ -31,7 +34,7 @@ class SignIn extends React.Component {
 
   renderForm = () => {
     const { email, password } = this.state;
-
+    const { googleSignInStart } = this.props;
     return (
       <form onSubmit={this.handleSubmit} className="sign-in__form">
         <FormInput
@@ -52,7 +55,7 @@ class SignIn extends React.Component {
         />
         <div className="sign-in__buttons">
           <CustomBtn type="submit">SIGN IN</CustomBtn>
-          <CustomBtn type="button" onClick={signInWithGoogle}>
+          <CustomBtn type="button" onClick={googleSignInStart}>
             SIGN IN WITH GOOGLE
           </CustomBtn>
         </div>
@@ -75,4 +78,4 @@ class SignIn extends React.Component {
   }
 }
 
-export default withRouter(SignIn);
+export default connect(null, { googleSignInStart })(withRouter(SignIn));

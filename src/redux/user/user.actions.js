@@ -4,4 +4,21 @@ export const setCurrentUser = (user) => ({
   payload: user,
 });
 
-export const a = 3;
+export const googleSignInStart = () => ({
+  type: 'GOOGLE_SIGN_IN_START',
+});
+
+export const emailSignInStart = (emailAndPass) => ({
+  type: 'EMAIL_SIGN_IN_START',
+  payload: emailAndPass,
+});
+
+export const signInSuccess = (user) => ({
+  type: 'SIGN_IN_SUCCESS',
+  payload: user,
+});
+
+export const signInFailure = (error) => ({
+  type: 'SIGN_IN_FAILURE',
+  payload: error,
+});

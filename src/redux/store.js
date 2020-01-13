@@ -9,7 +9,7 @@ import storage from 'redux-persist/lib/storage';
 
 import logger from 'redux-logger';
 
-import { shopSaga } from './shop/shop.sagas';
+import rootSaga from './root-saga';
 
 // we need to persist our reducer as well
 import rootReducer from './root-reducer';
@@ -35,7 +35,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 // PERSIST your store, saving in local storage
 export const store = createStore(persistedReducer, applyMiddleware(...middlewares));
 
-sagaMiddleware.run(shopSaga);
+sagaMiddleware.run(rootSaga);
 
 // REHYDRATE, giving the data back on refresh or reloasd
 export const persistor = persistStore(store);

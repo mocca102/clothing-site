@@ -1,4 +1,4 @@
-import { firestore, convertCollectionsSnapshotToMap } from '../../firebase/firebase.utils';
+// import { firestore, convertCollectionsSnapshotToMap } from '../../firebase/firebase.utils';
 
 export const fetchShopDataSuccess = (collections) => ({
   type: 'SHOP_DATA_SUCCESS',
