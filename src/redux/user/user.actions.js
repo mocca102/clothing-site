@@ -8,9 +8,9 @@ export const googleSignInStart = () => ({
   type: 'GOOGLE_SIGN_IN_START',
 });
 
-export const emailSignInStart = (emailAndPass) => ({
+export const emailSignInStart = (email, password) => ({
   type: 'EMAIL_SIGN_IN_START',
-  payload: emailAndPass,
+  payload: { email, password },
 });
 
 export const signInSuccess = (user) => ({

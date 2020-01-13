@@ -8,8 +8,7 @@ import './SignIn.scss';
 import FormInput from '../FormInput/FormInput';
 import CustomBtn from '../CustomBtn/CustomBtn';
 
-import { auth } from '../../firebase/firebase.utils';
-import { googleSignInStart } from '../../redux/user/user.actions';
+import { googleSignInStart, emailSignInStart } from '../../redux/user/user.actions';
 
 class SignIn extends React.Component {
   state = { email: '', password: '' };
@@ -21,15 +20,11 @@ class SignIn extends React.Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    const { history } = this.props;
+    const { history, emailSignInStart } = this.props;
     const { email, password } = this.state;
-    try {
-      await auth.signInWithEmailAndPassword(email, password);
-      this.setState({ email: '', password: '' });
-      history.push('/');
-    } catch (error) {
-      console.log('couldn\'t sign in with email and pass:', error.message);
-    }
+    emailSignInStart(email, password);
+    this.setState({ email: '', password: '' });
+    // history.push('/');
   }
 
   renderForm = () => {
@@ -78,4 +73,4 @@ class SignIn extends React.Component {
   }
 }
 
-export default connect(null, { googleSignInStart })(withRouter(SignIn));
+export default connect(null, { googleSignInStart, emailSignInStart })(withRouter(SignIn));
