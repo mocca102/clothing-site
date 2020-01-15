@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { createStructuredSelector } from 'reselect';
 
-import { setCurrentUser } from './redux/user/user.actions';
+import { setCurrentUser, checkUserSession } from './redux/user/user.actions';
 
 import { selectCurrentUser } from './redux/user/user.selectors';
 
@@ -21,6 +21,8 @@ class App extends React.Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
+    const { checkUserSession } = this.props;
+    checkUserSession();
     // listen to auth state and fire at every change
     // fire an async callback with userAuth as its argument
 
@@ -70,4 +72,9 @@ const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
 });
 
-export default connect(mapStateToProps, { setCurrentUser })(App);
+const mapDispatchToProps = {
+  setCurrentUser,
+  checkUserSession,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
