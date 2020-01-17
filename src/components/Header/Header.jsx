@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { createStructuredSelector } from 'reselect';
 
-import { auth } from '../../firebase/firebase.utils';
 import { ReactComponent as Logo } from '../../assets/crown.svg';
 
 import { HeaderContainer, NavContainer } from './Header.styles';
@@ -15,13 +14,14 @@ import CartDropdown from '../CartDropdown/CartDropdown';
 
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 import { selectCartHidden } from '../../redux/cart/cart.selectors';
+import { signOutStart } from '../../redux/user/user.actions';
 
-const renderSignInOrOut = (currentUser) => (
+const renderSignInOrOut = (currentUser, signOutStart) => (
   currentUser ? (
     <li
       style={{ marginRight: '1.5rem' }}
       onClick={() => {
-        auth.signOut();
+        signOutStart();
       }}
     >
       SIGN OUT
@@ -32,7 +32,7 @@ const renderSignInOrOut = (currentUser) => (
 );
 
 
-const Header = ({ currentUser, hidden }) => (
+const Header = ({ currentUser, hidden, signOutStart }) => (
   <HeaderContainer>
     <Link to="/">
       <Logo>logo</Logo>
@@ -40,7 +40,7 @@ const Header = ({ currentUser, hidden }) => (
     <NavContainer>
       <Link to="/shop"><li>SHOP</li></Link>
       {/* <Link to="/" className="header__nav-item"><li>CONTACT</li></Link> */}
-      {renderSignInOrOut(currentUser)}
+      {renderSignInOrOut(currentUser, signOutStart)}
     </NavContainer>
     <Cart />
     {hidden ? null : <CartDropdown />}
@@ -52,4 +52,4 @@ const mapStateToProps = createStructuredSelector({
   hidden: selectCartHidden,
 });
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, { signOutStart })(Header);

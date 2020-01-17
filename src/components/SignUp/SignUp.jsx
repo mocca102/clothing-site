@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import './SignUp.scss';
@@ -6,7 +7,7 @@ import './SignUp.scss';
 import FormInput from '../FormInput/FormInput';
 import CustomBtn from '../CustomBtn/CustomBtn';
 
-import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
+import { signUpStart } from '../../redux/user/user.actions';
 
 class SignUp extends React.Component {
   state = {
@@ -23,7 +24,7 @@ class SignUp extends React.Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    const { history } = this.props;
+    const { history, signUpStart } = this.props;
     const { displayName, email, password, confirmPassword } = this.state;
 
     if (password !== confirmPassword) {
@@ -32,8 +33,9 @@ class SignUp extends React.Component {
     }
 
     try {
-      const { user } = await auth.createUserWithEmailAndPassword(email, password);
-      await createUserProfileDocument(user, { displayName });
+      signUpStart(email, password, displayName);
+      // const { user } = await auth.createUserWithEmailAndPassword(email, password);
+      // await createUserProfileDocument(user, { displayName });
 
       this.setState({
         displayName: '',
@@ -97,4 +99,4 @@ class SignUp extends React.Component {
   }
 }
 
-export default withRouter(SignUp);
+export default connect(null, { signUpStart })(withRouter(SignUp));

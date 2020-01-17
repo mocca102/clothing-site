@@ -18,9 +18,9 @@ class SignIn extends React.Component {
     this.setState({ [name]: value });
   }
 
-  handleSubmit = async (e) => {
+  handleSubmit = (e) => {
     e.preventDefault();
-    const { history, emailSignInStart } = this.props;
+    const { emailSignInStart } = this.props;
     const { email, password } = this.state;
     emailSignInStart(email, password);
     this.setState({ email: '', password: '' });

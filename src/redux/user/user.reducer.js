@@ -1,6 +1,6 @@
 const INITIAL_STATE = {
   currentUser: null,
-  error: null,
+  errorMessage: null,
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -9,12 +9,19 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         currentUser: action.payload,
-        error: null,
+        errorMessage: null,
       };
     case 'SIGN_IN_FAILURE':
+    case 'SIGN_OUT_FAILURE':
       return {
         ...state,
-        error: action.payload,
+        errorMessage: action.payload,
+      };
+    case 'SIGN_OUT_SUCCESS':
+      return {
+        ...state,
+        currentUser: null,
+        errorMessage: null,
       };
     default:
       return state;
